@@ -1,0 +1,410 @@
+/* ==========================
+   WAI — Extended / Robust Styles
+   Purpose: Works with WaiAdvanced JS
+   (Loader, Menu, Focus Trap, Reveal, Lazy images...)
+   ========================== */
+
+/* ==========================
+   Variables & Theme
+   ========================== */
+:root{
+  /* brand */
+  --brand-dark: #6b4a2e;     /* primary dark brown */
+  --brand-light: #cdaa7d;    /* light brown */
+  --brand-bg: #ffffff;
+  --brand-contrast: #fff;
+
+  /* text */
+  --text-dark: #212121;
+  --text-muted: #6b6b6b;
+
+  /* UI tokens */
+  --radius-lg: 14px;
+  --radius-md: 10px;
+  --gap-lg: 40px;
+  --gap-md: 20px;
+
+  /* sizes */
+  --header-h: 64px;
+  --max-width: 1300px;
+
+  /* motion */
+  --motion-fast: 160ms;
+  --motion-base: 320ms;
+  --motion-slow: 520ms;
+
+  /* loader */
+  --loader-size: 110px;
+  --loader-ring-w: 6px;
+
+  /* accessibility */
+  --focus-outline: 3px solid #ffde9e; /* visible focus */
+}
+
+/* fonts (ensure same imports in HTML) */
+:root { --font-ar: "Cairo", system-ui, sans-serif; --font-en: "Inter", system-ui, sans-serif; }
+
+html{
+  font-family: var(--font-ar), var(--font-en), sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  background: var(--brand-bg);
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+}
+
+/* reset */
+*{box-sizing:border-box;margin:0;padding:0}
+img,video{max-width:100%;display:block;height:auto}
+a{color:var(--brand-dark);text-decoration:none}
+ul{list-style:none}
+
+/* ==========================
+   Utility
+   ========================== */
+.container{
+  max-width:var(--max-width);
+  margin-inline:auto;
+  padding-inline:24px;
+}
+
+/* hide visually but keep for screen readers */
+.visually-hidden{
+  position:absolute !important;
+  height:1px;width:1px;overflow:hidden;
+  clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px;
+}
+
+/* ==========================
+   Loader (full-page) — progressive + accessible
+   ========================== */
+.app-loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--brand-bg);
+  z-index:9999;
+  transition:opacity var(--motion-base) ease, visibility var(--motion-base);
+  opacity:1;
+  visibility:visible;
+  -webkit-tap-highlight-color:transparent;
+  pointer-events:auto;
+}
+
+/* when removed via JS we fade out (keep display none handled by JS) */
+.app-loader[aria-hidden="true"]{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* ring wrapper rotates; logo sits above */
+.loader-ring{
+  width:var(--loader-size);
+  height:var(--loader-size);
+  display:grid;
+  place-items:center;
+  position:relative;
+  border-radius:50%;
+  isolation:isolate;
+}
+
+/* rotating progress ring */
+.loader-ring::before{
+  /* animated stroke ring (semi circle style) */
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  padding:calc(var(--loader-ring-w) / 2);
+  background:
+    conic-gradient(var(--brand-dark) calc(var(--progress, 0) * 1%), rgba(0,0,0,0) 0);
+  -webkit-mask:
+    radial-gradient(farthest-side, transparent calc(100% - var(--loader-ring-w)), #000 calc(100% - var(--loader-ring-w)));
+  mask:
+    radial-gradient(farthest-side, transparent calc(100% - var(--loader-ring-w)), #000 calc(100% - var(--loader-ring-w)));
+  transition:background .2s linear;
+  transform: rotate(-90deg);
+}
+
+/* fallback CSS spinner for older support */
+.logo-svg{
+  width:64px;height:64px;
+  position:relative;
+  z-index:2;
+  display:block;
+}
+
+/* continuous spin (used if desired) */
+@keyframes wai-spin {
+  to{ transform: rotate(360deg); }
+}
+
+/* small pulsing under logo for subtle life */
+.loader-pulse{
+  position:absolute;inset:0;border-radius:50%;
+  filter:blur(6px);
+  opacity:.06;
+  background:linear-gradient(45deg,var(--brand-dark),var(--brand-light));
+  z-index:1;
+}
+
+/* text progress (assistive) */
+.app-loader .progress-text{
+  position:absolute;bottom:18px;font-size:13px;color:var(--text-muted);
+  z-index:3;
+}
+
+/* ==========================
+   App wrapper (hidden until JS shows)
+   ========================== */
+#app[hidden]{ display:none !important }
+
+/* ==========================
+   Header / Brand / Nav
+   ========================== */
+.site-header{
+  position:sticky;top:0;z-index:1100;
+  background:linear-gradient(180deg,rgba(255,255,255,0.98),rgba(255,255,255,0.92));
+  border-bottom:1px solid rgba(0,0,0,0.05);
+  backdrop-filter:saturate(120%) blur(6px);
+}
+
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--header-h);
+  max-width:var(--max-width);margin-inline:auto;padding-inline:24px;
+}
+
+/* Brand */
+.brand{display:flex;align-items:center;gap:12px;color:var(--brand-dark);font-weight:700}
+.brand-logo{width:46px;height:46px;flex:0 0 46px}
+.brand-title-ar{font-size:1.3rem;line-height:1}
+.brand-title-en{font-size:.78rem;color:var(--text-muted);display:block;line-height:1}
+
+/* nav desktop */
+.main-nav{display:flex;align-items:center}
+.nav-list{display:flex;gap:28px}
+.nav-list a{font-weight:600;padding:8px 6px;border-radius:8px;transition:background var(--motion-fast)}
+.nav-list a:focus,
+.nav-list a:hover{background:rgba(107,74,46,0.06);outline:none}
+
+/* hamburger */
+.hamburger{
+  display:none;background:none;border:0;padding:8px;border-radius:10px;cursor:pointer;
+}
+.hamburger:focus{outline:var(--focus-outline);outline-offset:2px}
+.hamburger svg rect{fill:var(--brand-dark)}
+
+/* ==========================
+   Mobile menu (slide + overlay)
+   ========================== */
+/* overlay wrapper to dim content when menu open */
+.menu-overlay{
+  position:fixed;inset:0;z-index:1050;display:none;background:rgba(0,0,0,0.32);backdrop-filter: blur(2px);
+  transition:opacity var(--motion-base) ease;
+  opacity:0;pointer-events:none;
+}
+
+/* visible state (JS toggles .is-open on #mobile-menu and shows overlay) */
+.menu-overlay.is-visible{display:block;opacity:1;pointer-events:auto}
+
+/* mobile menu panel */
+.mobile-menu{
+  position:fixed;top:var(--header-h);right:0;left:0;
+  z-index:1060;background:var(--brand-bg);
+  border-top:1px solid rgba(0,0,0,0.04);
+  padding:18px 20px;
+  transform-origin:top center;
+  transform: translateY(-8px) scale(.995);
+  opacity:0;
+  transition: transform var(--motion-base) ease, opacity var(--motion-base) ease;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+/* open state */
+.mobile-menu.is-open{ transform: translateY(0) scale(1); opacity:1 }
+
+/* hide via attribute when closed (JS uses hidden attr) */
+.mobile-menu[hidden]{ display:none !important; opacity:0; transform: translateY(-8px) scale(.995) }
+
+/* mobile list */
+.mobile-menu ul{ display:flex; flex-direction:column; gap:14px }
+.mobile-menu a{ padding:12px;border-radius:10px;font-weight:700;color:var(--brand-dark) }
+.mobile-menu a:focus{ outline:var(--focus-outline); outline-offset:2px }
+
+/* disable body scroll when menu open (JS should toggle class on body) */
+body.menu-open{ overflow:hidden; touch-action:none }
+
+/* ==========================
+   Focus trap helper (visual dim + focus ring)
+   ========================== */
+/* why: show modal-like layer to trap focus and visually separate content */
+.wai-focus-trap{
+  position:fixed;inset:0;z-index:1040;background:rgba(0,0,0,0.28);backdrop-filter: blur(2px);
+}
+
+/* ==========================
+   Hero / CTA
+   ========================== */
+.hero{ display:flex; gap:var(--gap-lg); align-items:center; justify-content:space-between; padding:80px 0; max-width:var(--max-width); margin-inline:auto; padding-inline:24px }
+.hero-title{ font-size:2.6rem; color:var(--brand-dark); line-height:1.08 }
+.hero-sub{ margin-top:18px; color:var(--text-muted); font-size:1.06rem }
+.hero-ctas{ margin-top:28px; display:flex; gap:16px }
+.btn{ padding:12px 26px;border-radius:var(--radius-md); font-weight:700; cursor:pointer; border:2px solid var(--brand-dark); transition: transform var(--motion-fast), background var(--motion-fast), color var(--motion-fast) }
+.btn.primary{ background:var(--brand-dark); color:var(--brand-contrast); box-shadow: 0 6px 18px rgba(107,74,46,0.09) }
+.btn.primary:active{ transform:translateY(1px) }
+.btn.outline{ background:transparent; color:var(--brand-dark) }
+
+/* hero image position */
+.hero-figure{ flex:1; display:flex; align-items:center; justify-content:center }
+
+/* ==========================
+   Sections & Cards
+   ========================== */
+section{ padding:60px 0; max-width:var(--max-width); margin-inline:auto; padding-inline:24px }
+section h2{ font-size:2rem; color:var(--brand-dark); margin-bottom:16px }
+
+/* services grid */
+.services-list{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px }
+.services-list li{ background:#faf6f3; padding:18px; border-radius:12px; border:1px solid rgba(0,0,0,0.03); font-weight:700 }
+
+/* ==========================
+   Reveal animations (on-scroll)
+   ========================== */
+/* base hidden state */
+[data-reveal]{ opacity:0; transform: translateY(18px) scale(.995); transition: opacity var(--motion-base) ease, transform var(--motion-base) ease; will-change: transform, opacity }
+
+/* revealed state */
+[data-reveal].revealed{ opacity:1; transform: translateY(0) scale(1) }
+
+/* stagger utility via inline style setting or CSS var --delay */
+[data-reveal][data-r-delay]{ transition-delay: calc(var(--r-delay, 0s)) }
+
+/* reduced motion: reveal instantly */
+@media (prefers-reduced-motion: reduce){
+  [data-reveal]{ transition:none; transform:none; opacity:1 }
+}
+
+/* ==========================
+   Lazy images — blur-up + states
+   ========================== */
+img[data-src], img[data-srcset]{
+  filter: blur(10px) saturate(.95);
+  transform: scale(1.02);
+  transition: filter 420ms ease, transform 420ms ease, opacity 320ms ease;
+  opacity:.98;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+}
+
+/* when loaded */
+img.loaded{ filter: none; transform: none; opacity:1 }
+
+/* failed */
+
+/* placeholder utility for progressive backgrounds */
+.lazy-placeholder{
+  background:linear-gradient(180deg,#f7f5f3,#fff); border-radius:10px; overflow:hidden;
+}
+
+/* ==========================
+   Focus styles (accessibility)
+   ========================== */
+:focus{ outline-offset:3px }
+a:focus, button:focus, input:focus, textarea:focus{ outline: var(--focus-outline); border-radius:8px }
+
+/* keyboard only focus visible (prefers) */
+@media (hover: none){
+  :focus{ outline: var(--focus-outline) }
+}
+
+/* ==========================
+   Footer
+   ========================== */
+.site-footer{ background:#fafafa;padding:40px 0;border-top:1px solid rgba(0,0,0,0.04) }
+.footer-inner{ max-width:var(--max-width); margin-inline:auto; padding-inline:24px; display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap }
+.site-footer p{ color:var(--text-muted) }
+
+/* ==========================
+   Responsive
+   ========================== */
+@media (max-width:1000px){
+  .hero{ flex-direction:column-reverse; text-align:center; gap:24px; padding-top:60px }
+  .hero-title{ font-size:2.2rem }
+  .brand-title-ar{ font-size:1.1rem }
+}
+
+@media (max-width:900px){
+  .main-nav{ display:none }
+  .hamburger{ display:block }
+  .header-inner{ padding-inline:16px }
+  /* mobile-specific overlay/menu toggling: add is-open class on mobile-menu and menu-overlay via JS */
+}
+
+/* small screens */
+@media (max-width:600px){
+  :root{ --header-h:56px }
+  .hero{ padding:48px 0 }
+  section{ padding:40px 0 }
+}
+
+/* ==========================
+   Reduced motion explicit (enhanced safety)
+   ========================== */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important }
+}
+
+/* ==========================
+   Helpers for JS hooks & debug
+   ========================== */
+/* JS may set data-progress on .app-loader (0..100) */
+.app-loader[data-progress]::before{
+  /* expose progress via CSS variable for potential visuals */
+  --progress: calc(attr(data-progress number) / 1);
+}
+
+/* class to visually hide header shadows when needed */
+.site-header.no-shadow{ box-shadow:none; border-bottom:1px solid transparent }
+
+/* small utility */
+.center{ display:flex; align-items:center; justify-content:center }
+
+
+
+/* ==== Reveal Sections ==== */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==== Social Icons ==== */
+.social-links {
+  display: flex;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.social-links img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+  transform: scale(1.15);
+}
+
+
+
+/* ==========================
+   End of file
+   ========================== */

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="منصة وعي — الإرشاد الأكاديمي، النفسي، الأسري والاجتماعي. تمكين الأفراد لاتخاذ قرارات واعية وبناء حياة متوازنة." />
+  <meta name="theme-color" content="#ffffff">
+
+  <title>وعي — منصة الإرشاد الأكاديمي والأسري والنفسي</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons / Social meta -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+
+  <meta property="og:title" content="وعي — منصة الإرشاد" />
+  <meta property="og:description" content="تمكين الأفراد لاتخاذ قرارات واعية وبناء حياة متوازنة." />
+  <meta property="og:image" content="assets/og-image.png">
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="وعي — منصة الإرشاد">
+  <meta name="twitter:image" content="assets/og-image.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ====================== Loader ====================== -->
+  <div id="app-loader" class="app-loader" role="status" aria-live="polite">
+    <div class="loader-ring">
+      <img src="Untitled-5.png" class="logo-svg" alt="شعار منصة وعي" />
+    </div>
+    <span class="visually-hidden">جاري التحميل…</span>
+  </div>
+
+  <!-- ====================== App Wrapper ====================== -->
+  <div id="app" hidden>
+
+    <!-- ====================== Header ====================== -->
+    <header class="site-header">
+      <div class="header-inner">
+
+        <!-- Brand -->
+        <a href="/" class="brand" aria-label="الرئيسية">
+          <img src="Untitled-5.png" class="brand-logo" alt="شعار وعي">
+          <span>
+            <span class="brand-title-ar">وَعَّـــي</span>
+            <span class="brand-title-en" lang="en">W’aay</span>
+          </span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="main-nav" aria-label="القائمة الرئيسية">
+          <ul class="nav-list">
+            <li><a href="#about">عن وعي</a></li>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="Inspirational.html">رسالة لك</a></li>
+            <li><a href="#contact">تواصل</a></li>
+            <li><a href="About Us.html">من نحن</a></li>
+          </ul>
+        </nav>
+
+        <!-- Hamburger -->
+        <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false">
+          <svg width="28" height="20" viewBox="0 0 28 20">
+            <rect x="0" y="2" width="28" height="2" rx="1"></rect>
+            <rect x="0" y="9" width="28" height="2" rx="1"></rect>
+            <rect x="0" y="16" width="28" height="2" rx="1"></rect>
+          </svg>
+        </button>
+
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu" hidden>
+        <ul>
+          <li><a href="#about">عن وعي</a></li>
+          <li><a href="#services">خدمات</a></li>
+          <li><a href="Inspirational.html">رسالة لك</a></li>
+          <li><a href="#contact">تواصل</a></li>
+            <li><a href="About Us.html">من نحن</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- ====================== Hero ====================== -->
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-inner" data-reveal>
+          <h1 class="hero-title">منصة الإرشاد — وعي</h1>
+          <p class="hero-sub">تمكين الأفراد لاتخاذ قرارات واعية وبناء حياة متوازنة — إرشاد أكاديمي، أسرى، نفسي واجتماعي.</p>
+
+          <div class="hero-ctas">
+            <a class="btn primary" href="#services">ابدأ الآن</a>
+            <a class="btn outline" href="#about">المزيد عن المنصة</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================== About ====================== -->
+      <section id="about" data-reveal>
+        <h2>عن وعي</h2>
+        <p>وعي منصة تعليمية تقدم الإرشاد الأكاديمي والأسري والنفسي والاجتماعي، لتمكين الأفراد من اتخاذ قرارات واعية.</p>
+      </section>
+
+      <!-- ====================== Services ====================== -->
+      <section id="services" data-reveal>
+        <h2>خدماتنا</h2>
+        <ul class="services-list">
+          <li>إرشاد أكاديمي</li>
+          <li>استشارات أسرية</li>
+          <li>استشارات نفسية</li>
+          <li>ورش وتطوير مهارات</li>
+        </ul>
+      </section>
+
+      <!-- ====================== Contact ====================== -->
+      <section id="contact" data-reveal>
+        <h2>تواصل معنا</h2>
+
+        <p>البريد: <a href="mailto:info@wai.org">info@wai.org</a></p>
+
+        <div class="social-links">
+
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+            <img src="assets/icons/facebook.svg" alt="">
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+            <img src="assets/icons/instagram.svg" alt="">
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/00000000" target="_blank" aria-label="WhatsApp">
+            <img src="assets/icons/whatsapp.svg" alt="">
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+            <img src="assets/icons/linkedin.svg" alt="">
+          </a>
+
+          <!-- TikTok -->
+          <a href="https://tiktok.com" target="_blank" aria-label="TikTok">
+            <img src="assets/icons/tiktok.svg" alt="">
+          </a>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ====================== Footer ====================== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>© <span id="year">2025</span> منصة وعي — جميع الحقوق محفوظة.</p>
+        <nav aria-label="روابط إضافية">
+          <a href="privacy.html">سياسة الخصوصية</a> ·
+          <a href="terms.html">الشروط والأحكام</a>
+        </nav>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="app.js" defer></script>
+
+</body>
+</html>

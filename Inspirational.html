@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>رسائل ملهمة — منصة وعي</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bubble-right: #e8dcc7;
+      --bubble-left: #ffffff;
+      --name-color: #6c4b33;
+      --border: #d2c1a8;
+      --shadow: rgba(0,0,0,0.12);
+    }
+
+    body {
+      background: #faf7f2;
+      font-family: "Cairo", sans-serif;
+    }
+
+    /* العنوان */
+    .page-title {
+      text-align: center;
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin: 40px 0 10px;
+      color: #4a3628;
+    }
+
+    .divider {
+      width: 120px;
+      height: 6px;
+      background: linear-gradient(90deg, #4a3628, #cdb89d);
+      border-radius: 20px;
+      margin: 0 auto 40px;
+    }
+
+    /* الرسائل */
+    .chat-container {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .chat-msg {
+      width: fit-content;
+      max-width: 90%;
+      position: relative;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: var(--bubble-right);
+      box-shadow: 0 8px 20px var(--shadow);
+      animation: slideIn 0.7s ease;
+    }
+
+    /* رسائل يسار */
+    .left {
+      align-self: flex-start;
+      background: var(--bubble-left);
+      border: 2px solid var(--border);
+    }
+
+    /* رسائل يمين */
+    .right {
+      align-self: flex-end;
+      background: var(--bubble-right);
+      border: 2px solid var(--border);
+    }
+
+    /* الصورة */
+    .msg-photo {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #cdb89d;
+      position: absolute;
+      top: -30px;
+      right: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+
+    .left .msg-photo {
+      left: 10px;
+      right: auto;
+    }
+
+    /* الاسم */
+    .msg-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--name-color);
+      margin-bottom: 6px;
+    }
+
+    /* النص */
+    .msg-text {
+      color: #4f3e30;
+      font-size: 1.05rem;
+      line-height: 1.9;
+    }
+
+    /* انيميشن */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="app-loader" class="app-loader">
+  <div class="loader-ring">
+    <img src="Untitled-5.png" class="logo-svg" alt="">
+  </div>
+</div>
+
+<div id="app" hidden>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="Untitled-5.png" class="brand-logo" alt="">
+        <div>
+          <span class="brand-title-ar">وَعَّـــي</span>
+          <span class="brand-title-en">W’aay</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="About Us.html">من نحن</a></li>
+          <li><a href="index.html">خدماتنا</a></li>
+          <li><a href="index.html">تواصل</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false">
+        <svg width="28" height="20">
+          <rect x="0" y="2" width="28" height="2" rx="1"/>
+          <rect x="0" y="9" width="28" height="2" rx="1"/>
+          <rect x="0" y="16" width="28" height="2" rx="1"/>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="About Us.html">من نحن</a></li>
+        <li><a href="index.html#services">خدماتنا</a></li>
+        <li><a href="index.html#contact">تواصل</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+
+  <!-- ====================== رسائل ملهمة ====================== -->
+
+  <h1 class="page-title">رسائل ملهمة</h1>
+  <div class="divider"></div>
+
+  <div class="chat-container">
+
+    <!-- كل رسالة جاهزة — 20 رسالة — تبادلية يمين ويسار -->
+
+    <div class="chat-msg right">
+      <img src="assets/messages/1.jpg" class="msg-photo">
+      <div class="msg-name">نيلسون مانديلا</div>
+      <div class="msg-text">"الأمر يبدو مستحيلاً دائمًا… إلى أن يتم إنجازه."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/2.jpg" class="msg-photo">
+      <div class="msg-name">ألبرت أينشتاين</div>
+      <div class="msg-text">"الخيال أهم من المعرفة."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/3.jpg" class="msg-photo">
+      <div class="msg-name">ستيف جوبز</div>
+      <div class="msg-text">"ابتكر. لا تقلد."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/4.jpg" class="msg-photo">
+      <div class="msg-name">باولو كويلو</div>
+      <div class="msg-text">"عندما ترغب في شيء… فإن الكون يتآمر لمساعدتك."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/5.jpg" class="msg-photo">
+      <div class="msg-name">أوبرا وينفري</div>
+      <div class="msg-text">"حَوّل جراحك إلى حكمة."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/6.jpg" class="msg-photo">
+      <div class="msg-name">مارك توين</div>
+      <div class="msg-text">"السر في التقدم… أن تبدأ."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/7.jpg" class="msg-photo">
+      <div class="msg-name">غندي</div>
+      <div class="msg-text">"كن أنت التغيير الذي تريد أن تراه في العالم."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/8.jpg" class="msg-photo">
+      <div class="msg-name">ول ديزني</div>
+      <div class="msg-text">"إذا كنت تستطيع حلمه… يمكنك فعله."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/9.jpg" class="msg-photo">
+      <div class="msg-name">مارتن لوثر كينغ</div>
+      <div class="msg-text">"لدي حلم…"</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/10.jpg" class="msg-photo">
+      <div class="msg-name">كونفوشيوس</div>
+      <div class="msg-text">"رحلة الألف ميل تبدأ بخطوة."</div>
+    </div>
+
+    <!-- أكمل لك 10 إضافية: -->
+
+    <div class="chat-msg right">
+      <img src="assets/messages/11.jpg" class="msg-photo">
+      <div class="msg-name">جبران خليل جبران</div>
+      <div class="msg-text">"لا أحد يستطيع أن ينال منّا إلا ما أعطيناه."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/12.jpg" class="msg-photo">
+      <div class="msg-name">شكسبير</div>
+      <div class="msg-text">"الأشياء ليست كما تبدو… بل كما نفكر فيها."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/13.jpg" class="msg-photo">
+      <div class="msg-name">إليانور روزفلت</div>
+      <div class="msg-text">"افعل ما تخشاه… يتلاشى الخوف."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/14.jpg" class="msg-photo">
+      <div class="msg-name">نابليون هيل</div>
+      <div class="msg-text">"ما يستطيع عقل الإنسان تصوره… يستطيع تحقيقه."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/15.jpg" class="msg-photo">
+      <div class="msg-name">توماس إديسون</div>
+      <div class="msg-text">"لم أفشل، فقط اكتشفت 10,000 طريقة لا تعمل."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/16.jpg" class="msg-photo">
+      <div class="msg-name">ابن سينا</div>
+      <div class="msg-text">"الوهم نصف الداء… والاطمئنان نصف الدواء."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/17.jpg" class="msg-photo">
+      <div class="msg-name">ابراهيم الفقي</div>
+      <div class="msg-text">"لن تستطيع تغيير الماضي… لكن يمكنك تغيير المستقبل."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/18.jpg" class="msg-photo">
+      <div class="msg-name">جيف بيزوس</div>
+      <div class="msg-text">"اتّبع شغفك—not your competitors."</div>
+    </div>
+
+    <div class="chat-msg right">
+      <img src="assets/messages/19.jpg" class="msg-photo">
+      <div class="msg-name">بوذا</div>
+      <div class="msg-text">"السلام يأتي من داخلك… لا تبحث عنه خارجك."</div>
+    </div>
+
+    <div class="chat-msg left">
+      <img src="assets/messages/20.jpg" class="msg-photo">
+      <div class="msg-name">ابن القيم</div>
+      <div class="msg-text">"على قدر نيتك تُرزق."</div>
+    </div>
+
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 منصة وعي — جميع الحقوق محفوظة.</p>
+      <nav>
+        <a href="privacy.html">سياسة الخصوصية</a> ·
+        <a href="terms.html">الشروط والأحكام</a> ·
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>

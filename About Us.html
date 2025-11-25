@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>من نحن — منصة وعي</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --dark: #3a2e25;
+      --light: #d6c1a6;
+      --bg: #faf7f3;
+      --border: #c7b299;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: "Cairo", sans-serif;
+    }
+
+    /* ====== عام ====== */
+    .content-block {
+      max-width: 1100px;
+      margin: 80px auto;
+      background: #ffffff;
+      padding: 40px 30px;
+      border-radius: 22px;
+      border: 1px solid #eee;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+      animation: fadeIn 0.8s ease;
+    }
+
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--dark);
+      text-align: center;
+      display: inline-block;
+      padding: 10px 28px;
+      border: 3px solid var(--border);
+      border-radius: 20px;
+      margin: 0 auto 25px;
+      background: white;
+    }
+
+    .section-title-wrapper {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .content-block p {
+      font-size: 1.3rem;
+      color: #4a3d31;
+      line-height: 2.4;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .section-title {
+        font-size: 1.9rem;
+        padding: 8px 20px;
+      }
+
+      .content-block p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Loader -->
+<div id="app-loader" class="app-loader">
+  <div class="loader-ring">
+    <img src="Untitled-5.png" class="logo-svg" alt="" />
+  </div>
+</div>
+
+<div id="app" hidden>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="Untitled-5.png" class="brand-logo" alt="" />
+        <div>
+          <span class="brand-title-ar">وَعَّـــي</span>
+          <span class="brand-title-en">W’aay</span>
+        </div>
+      </a>
+
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="index.html">خدماتنا</a></li>
+          <li><a href="Inspirational.html">رسالة لك</a></li>
+          <li><a href="index.html">تواصل</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" aria-controls="mobile-menu" aria-expanded="false">
+        <svg width="28" height="20">
+          <rect x="0" y="2" width="28" height="2" />
+          <rect x="0" y="9" width="28" height="2" />
+          <rect x="0" y="16" width="28" height="2" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="index.html">خدماتنا</a></li>
+        <li><a href="Inspirational.html">رسالة لك</a></li>
+        <li><a href="index.html">تواصل</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+  <!-- ========================== من نحن ========================== -->
+  <section class="content-block">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">من نحن</h2>
+    </div>
+    <p>
+      نحن مجموعة من الأفراد يجمعنا الشغف بالتطوير الذاتي والإرشاد ونشر المعرفة،
+      قررنا أن نؤسس منصة <strong>وَعَّـــي - W’aay </strong> لتكون مساحة آمنة وموثوقة تساعد
+      كل شخص على بناء حياة أكثر توازناً من خلال الوعي والمعرفة والإرشاد الحقيقي.
+    </p>
+  </section>
+
+
+  <!-- ========================== رسالتنا ========================== -->
+  <section class="content-block">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">رسالتنا</h2>
+    </div>
+    <p>
+      أن نمنح كل فرد الأدوات التي تمكّنه من فهم ذاته، تطوير مهاراته، تحسين
+      علاقاته، واتخاذ قرارات واعية في حياته الأكاديمية، النفسية، والاجتماعية.
+    </p>
+  </section>
+
+
+  <!-- ========================== رؤيتنا ========================== -->
+  <section class="content-block">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">رؤيتنا</h2>
+    </div>
+    <p>
+      أن نصبح المرجع الأول للوعي والتطوير الشخصي باللغة العربية، وأن نبني مجتمعاً
+      واعياً قادرًا على تحقيق التوازن بين المشاعر، العلاقات، العمل، والتعليم.
+    </p>
+  </section>
+
+
+  <!-- ========================== هدفنا ========================== -->
+  <section class="content-block">
+    <div class="section-title-wrapper">
+      <h2 class="section-title">هدفنا</h2>
+    </div>
+    <p>
+      تقديم محتوى عميق مبني على أسس علمية، وصياغته بشكل مبسط، عملي، وقابل
+      للتطبيق لمساعدة كل فرد على تحسين جودة حياته خطوة بخطوة.
+    </p>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 منصة وعي — جميع الحقوق محفوظة.</p>
+      <nav>
+        <a href="privacy.html">سياسة الخصوصية</a> ·
+        <a href="terms.html">الشروط والأحكام</a>
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script src="app.js" defer></script>
+</body>
+</html>
